@@ -5,20 +5,20 @@
 # @File    : train.py
 # @Software: PyCharm
 
-from ultralytics import YOLO, RTDETR
+from ultralytics import RTDETR
 
 if __name__ == '__main__':
-    teacher_model = RTDETR("D:/Eggg/CVR EGG 4.v2i.yolov11/rtdetr-x.pt")
+    # teacher_model = RTDETR("D:/Eggg/CVR EGG 4.v2i.yolov11/rtdetr-x.pt")
 
-    model = YOLO('D:/Eggg/CVR EGG 4.v2i.yolov11/YOLOv8_MobileNetv4_ultralytics/ultralytics/cfg/models/v8/yolov8s-mobilenetv4.yaml')
+    model = RTDETR('D:/NCKHSV.2024-2025/Streamlit-Autocashing/mobilev4_ultralytics/ultralytics/cfg/models/rt-detr/rtdetr-mobilnet.yaml')
     # model.load('yolov8n.pt') # loading pretrain weights
     # print(model)
-    results=model.train(data=r'D:/Eggg/CVR EGG 4.v2i.yolov11/data.yaml',
+    results=model.train(data=r"D:/NCKHSV.2024-2025/Cash_register_data/data.yaml",
                         epochs=150,#训练轮数
                         imgsz=640,#输入图像大小
                         val=True,#是否进行验证
-                        teacher=teacher_model.model,
-                        distillation_loss="cwd",
+                        # teacher=teacher_model.model,
+                        # distillation_loss="cwd",
                         # lr0=0.012,#学习率设置
                         patience=0,#为0是取消早停，0-300是设置早停
                         device=0,#运行设备
